@@ -1,0 +1,1 @@
+export const clearString = (str:string):string => str.toLocaleLowerCase().replace(/ /g,'');
