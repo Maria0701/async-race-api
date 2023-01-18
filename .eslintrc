@@ -3,6 +3,10 @@
       "browser": true,
       "es2021": true
     },
+    "plugins": [
+        "import",
+        "@typescript-eslint"
+    ],
     "extends": [
       "airbnb-typescript/base",
       "eslint:recommended",
@@ -12,9 +16,6 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     },
-    "plugins": [
-      "@typescript-eslint"
-    ],
     "rules": {
       "no-plusplus": "off",
       "no-console": "warn",
