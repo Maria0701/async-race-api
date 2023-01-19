@@ -1,8 +1,12 @@
 import { ChooserRow } from './elements/chooserRow';
 import { createBtn, createGenerateBtn, createRaceBtn, createResetBtn, updateBtn } from './elements/createBtn';
+import { createCarRow } from './elements/createCarRow';
 import { createNewElement } from './elements/createElt';
 import { createColorInput, createNameInput } from './elements/createInputs';
 import { topRow } from './elements/topRow';
+import { ICar } from './models/models';
+import { getCars } from './requests/carsRequest';
+
 import './styles.scss';
 
 const container = document.querySelector('.main') as HTMLElement;
@@ -32,6 +36,29 @@ chooserRow3.append(createRaceBtn());
 chooserRow3.append(createResetBtn());
 chooserRow3.append(createGenerateBtn());
 
+
+const createH1 = (num: number) => createNewElement({
+  tag: 'h1',
+  text: `Garage (${num})`,
+  className: 'h1'
+});
+
+const createPageElt = (pageNumber: number) => createNewElement({
+  tag: 'div',
+  className: 'page',
+  text: `Page ${pageNumber}`,
+});
+
+const cars = async () => await getCars()
+  .then((res:ICar[]) => {
+    mainContainer.append(createH1(res.length));
+    mainContainer.append(createPageElt(1));
+    mainContainer.append(raceContainer);
+    
+    res.map(item => raceContainer.append(createCarRow(item)));
+});
+cars();
+
 const mainContainer = createNewElement({
     tag: 'div',
     className: 'main-container',
@@ -39,23 +66,13 @@ const mainContainer = createNewElement({
 
 container.append(mainContainer);
 
-const h1 = createNewElement({
-    tag: 'h1',
-    text: 'Garage (205)',
-    className: 'h1'
-});
 
-const pageElt = createNewElement({
-    tag: 'div',
-    className: 'page',
-    text: 'Page #1',
-});
-
-const raceContainer  = createNewElement({
+const raceContainer = createNewElement({
     tag: 'div',
     className: 'main-container__race',
 });
 
-mainContainer.append(h1);
-mainContainer.append(pageElt);
-mainContainer.append(raceContainer);
+
+
+
+

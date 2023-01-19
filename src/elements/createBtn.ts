@@ -1,7 +1,7 @@
 import { clearString } from "../utilities/utilities";
 import { createNewElement } from "./createElt";
 
-enum DETAILED_BTNS  {
+export enum DETAILED_BTNS  {
   create = 'CREATE',
   update = 'UPDATE',
   race = 'RACE',
@@ -11,6 +11,8 @@ enum DETAILED_BTNS  {
   remove = 'REMOVE',
   toGarage = 'TO GARAGE',
   toWinners = 'TO WINNERS',
+  start = 'A',
+  stop = 'B',
 };
 
 export const toGarageBtn = () => createNewElement({
@@ -76,7 +78,7 @@ export const createGenerateBtn = () => createNewElement({
   }
 });
 
-export const selectBtn = () => createNewElement({
+export const createSelectBtn = () => createNewElement({
   tag: 'button',
   text: DETAILED_BTNS.select,
   attrs: {
@@ -85,7 +87,7 @@ export const selectBtn = () => createNewElement({
   }
 });
 
-export const removeBtn = () => createNewElement({
+export const createRemoveBtn = () => createNewElement({
   tag: 'button',
   text: DETAILED_BTNS.remove,
   attrs: {
