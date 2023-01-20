@@ -1,13 +1,18 @@
 import { ICar } from "../models/models";
-import { clearString } from "../utilities/utilities";
 import { carTemplate } from "./car-svg";
-import { createRemoveBtn, createSelectBtn, DETAILED_BTNS } from "./createBtn";
+import { createRemoveBtn, createSelectBtn } from "./createBtn";
 import { createNewElement } from "./createElt";
+import { createEndBtn } from "./createEndBtn";
+import { createSingleCar } from "./createSingleCar";
+import { createStartBtn } from "./createStartBtn";
 
 export const createCarRow = ({name, color, id}: ICar) => {
   const carRow = createNewElement({
     tag: 'div',
     className: 'car-row',
+    attrs: {
+      'data-name': `${id}`,
+    },
   });
 
   const carBtnsRow = createNewElement({
@@ -35,37 +40,16 @@ export const createCarRow = ({name, color, id}: ICar) => {
     className: 'route',
   });
 
-  const startBtn = createNewElement({
-    tag: 'button',
-    className: 'start',
-    attrs: {
-      'data-name': clearString(DETAILED_BTNS.start),
-    },
-    text: DETAILED_BTNS.start,
-  });
-
-  const endBtn = createNewElement({
-    tag: 'button',
-    className: 'start',
-    attrs: {
-      'data-name': `${clearString(DETAILED_BTNS.stop)}${id}`,
-    },
-    text: DETAILED_BTNS.stop,
-  });
+  const startBtn = createStartBtn(id!);
+  const endBtn = createEndBtn(id!);
 
   carRow.append(routeBlock);
 
   routeBlock.append(startBtn);
   routeBlock.append(endBtn);
 
-  const car = createNewElement({
-    tag: 'div',
-     attrs: {
-      'style': color,
-      'data-name': clearString(DETAILED_BTNS.stop),
-    },
-  });
-  
+  const car = createSingleCar(color);
+
   car.innerHTML = carTemplate();
   routeBlock.append(car);
   return carRow;

@@ -1,19 +1,6 @@
+import { DETAILED_BTNS } from "../models/models";
 import { clearString } from "../utilities/utilities";
 import { createNewElement } from "./createElt";
-
-export enum DETAILED_BTNS  {
-  create = 'CREATE',
-  update = 'UPDATE',
-  race = 'RACE',
-  reset ='RESET',
-  generate = 'GENERATE CARS',
-  select = 'SELECT',
-  remove = 'REMOVE',
-  toGarage = 'TO GARAGE',
-  toWinners = 'TO WINNERS',
-  start = 'A',
-  stop = 'B',
-};
 
 export const toGarageBtn = () => createNewElement({
   tag: 'button',
@@ -33,24 +20,6 @@ export const toWinnerBtn = () => createNewElement({
   }
 });
 
-export const createBtn = () => createNewElement({
-  tag: 'button',
-  text: DETAILED_BTNS.create,
-  attrs: {
-    class: 'btn btn--blue',
-    'data-id': clearString(DETAILED_BTNS.create),
-  }
-});
-
-export const updateBtn = () => createNewElement({
-  tag: 'button',
-  text: DETAILED_BTNS.update,
-  attrs: {
-    class: 'btn btn--blue',
-    'data-id': clearString(DETAILED_BTNS.update),
-  }
-});
-
 export const createRaceBtn = () => createNewElement({
   tag: 'button',
   text: DETAILED_BTNS.race,
@@ -66,15 +35,6 @@ export const createResetBtn = () => createNewElement({
   attrs: {
     class: 'btn btn--yellow',
     'data-id': clearString(DETAILED_BTNS.reset),
-  }
-});
-
-export const createGenerateBtn = () => createNewElement({
-  tag: 'button',
-  text: DETAILED_BTNS.generate,
-  attrs: {
-    class: 'btn btn--yellow',
-    'data-id': clearString(DETAILED_BTNS.generate),
   }
 });
 
