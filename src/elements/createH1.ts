@@ -1,8 +1,8 @@
 import { createNewElement } from "./createElt";
 
-export const createH1 = (num: number, text: string) => createNewElement({
+export const createH1 = (text: string) => createNewElement({
   tag: 'h1',
-  text: `${text} ${num}`,
+  text: `${text}`,
   className: 'h1'
 });
   

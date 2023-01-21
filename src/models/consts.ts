@@ -1,6 +1,7 @@
 export const baseUrl = 'http://localhost:3000';
 export const numOfCars = 100;
 export const startNum = 0;
+export const carsPerPage = 7;
 
 export const CARS_SUPPLS = [
   'Audi',

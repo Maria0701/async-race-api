@@ -38,3 +38,9 @@ export enum PageNames {
   garage = 'Garage',
   winners = 'Winners',
 };
+
+export enum AjaxActions {
+  put = 'PUT',
+  get = 'GET',
+  delete = 'DELETE',
+}

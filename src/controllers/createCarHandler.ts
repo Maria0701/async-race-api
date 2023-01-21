@@ -6,7 +6,7 @@ export const createHandler = (evt:Event, id?: number) => {
   const colorElt = row?.querySelector('[type="color"]') as HTMLInputElement;
   console.log(nameElt?.value, colorElt.value);
   if (nameElt.value === '') {
-    alert('Type In car Name!');
+    alert('Type in car Name!');
     return;
   }
 

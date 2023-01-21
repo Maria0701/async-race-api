@@ -47,11 +47,3 @@ export const createSelectBtn = () => createNewElement({
   }
 });
 
-export const createRemoveBtn = () => createNewElement({
-  tag: 'button',
-  text: DETAILED_BTNS.remove,
-  attrs: {
-      class: 'btn btn--yellow',
-      'data-id': clearString(DETAILED_BTNS.remove),
-  }
-});

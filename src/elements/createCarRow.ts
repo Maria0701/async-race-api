@@ -1,33 +1,25 @@
+import { removeCarHandler } from "../controllers/removeCarHandler";
 import { ICar } from "../models/models";
 import { carTemplate } from "./car-svg";
-import { createRemoveBtn, createSelectBtn } from "./createBtn";
-import { createNewElement } from "./createElt";
-import { createEndBtn } from "./createEndBtn";
-import { createSingleCar } from "./createSingleCar";
-import { createStartBtn } from "./createStartBtn";
+import { createCarBtnsRow } from "./singleCarElts/createCarBtnsRow";
+import { createCarNameElement } from "./singleCarElts/createCarNameElt";
+import { createRouteBlock } from "./singleCarElts/createCarRouteBlock";
+import { createCarBlock } from "./createCarRowBlock";
+import { createEndBtn } from "./singleCarElts/createEndBtn";
+import { createRemoveBtn } from "./singleCarElts/createRemoveBtn";
+import { createSingleCar } from "./singleCarElts/createSingleCar";
+import { createStartBtn } from "./singleCarElts/createStartBtn";
+import { createSelectBtn } from "./singleCarElts/createSelectBtn";
 
 export const createCarRow = ({name, color, id}: ICar) => {
-  const carRow = createNewElement({
-    tag: 'div',
-    className: 'car-row',
-    attrs: {
-      'data-name': `${id}`,
-    },
-  });
+  
+  const carRow = createCarBlock(id!);
 
-  const carBtnsRow = createNewElement({
-    tag: 'div',
-    className: 'car-row__btns',
-  });
+  const carBtnsRow = createCarBtnsRow();
 
-  const nameElement = createNewElement({
-    tag: 'h3',
-    className: 'car-row__name',
-    text: name,
-  });
-
-  const selectBtn = createSelectBtn();
-  const removeBtn = createRemoveBtn();
+  const nameElement = createCarNameElement(name);
+  const selectBtn = createSelectBtn(id!);
+  const removeBtn = createRemoveBtn(id!);
 
   carBtnsRow.append(selectBtn);
   carBtnsRow.append(removeBtn);
@@ -35,10 +27,9 @@ export const createCarRow = ({name, color, id}: ICar) => {
 
   carRow.append(carBtnsRow);
 
-  const routeBlock = createNewElement({
-    tag: 'div',
-    className: 'route',
-  });
+  removeBtn.addEventListener('click', removeCarHandler);
+
+  const routeBlock = createRouteBlock();
 
   const startBtn = createStartBtn(id!);
   const endBtn = createEndBtn(id!);
@@ -48,7 +39,7 @@ export const createCarRow = ({name, color, id}: ICar) => {
   routeBlock.append(startBtn);
   routeBlock.append(endBtn);
 
-  const car = createSingleCar(color);
+  const car = createSingleCar(color, id!);
 
   car.innerHTML = carTemplate();
   routeBlock.append(car);

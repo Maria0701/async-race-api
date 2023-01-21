@@ -1,17 +1,15 @@
 import { createHandler } from './controllers/createCarHandler';
 import { createCars } from './controllers/createCarsHandler';
+import { createRaceContainer } from './controllers/createRaceContainer';
 import { ChooserRow } from './elements/chooserRow';
 import { createRaceBtn, createResetBtn } from './elements/createBtn';
-import { createCarRow } from './elements/createCarRow';
 import { createBtn } from './elements/createCreateBtn';
-import { createNewElement } from './elements/createElt';
 import { createGenerateBtn } from './elements/createGenerateBtn';
-import { createH1 } from './elements/createH1';
 import { createColorInput, createNameInput } from './elements/createInputs';
-import { createPageElt } from './elements/createPageElt';
+import { createMainContainer } from './elements/createMainContainer';
 import { createUpdateBtn } from './elements/createUpdateBTn';
 import { topRow } from './elements/topRow';
-import { ICar, PageNames, Paths } from './models/models';
+import { ICar, Paths } from './models/models';
 import { ajaxRequest } from './requests/ajaxRequest';
 
 import './styles.scss';
@@ -34,6 +32,7 @@ const updateBtn = createUpdateBtn();
 chooserRow1.append(createdBtn);
 
 createdBtn.addEventListener('click', createHandler);
+
 updateBtn.addEventListener('click', (evt) => {
   let id = 1;
   createHandler(evt, id)
@@ -43,9 +42,7 @@ const chooserRow2 = ChooserRow();
 container.append(chooserRow2);
 chooserRow2.append(createNameInput());
 chooserRow2.append(createColorInput());
-
 chooserRow2.append(updateBtn);
-
 const chooserRow3 = ChooserRow()
 container.append(chooserRow3);
 
@@ -57,25 +54,13 @@ chooserRow3.append(generateBtn);
 
 generateBtn.addEventListener('click', createCars);
 
-const mainContainer = createNewElement({
-  tag: 'div',
-  className: 'main-container',
-});
-
+const mainContainer = createMainContainer();
 container.append(mainContainer);
 
-const raceContainer = createNewElement({
-    tag: 'div',
-    className: 'main-container__race',
-});
 
 const cars = async () => await ajaxRequest('GET', Paths.garage)
   .then((res:ICar[]) => {
-    mainContainer.append(createH1(res.length, PageNames.garage));
-    mainContainer.append(createPageElt(1));
-    mainContainer.append(raceContainer);
-
-    res.map(item => raceContainer.append(createCarRow(item)));
+    createRaceContainer(res, 1, mainContainer)
 });
 cars();
 
