@@ -4,15 +4,17 @@ import { carTemplate } from "./car-svg";
 import { createCarBtnsRow } from "./singleCarElts/createCarBtnsRow";
 import { createCarNameElement } from "./singleCarElts/createCarNameElt";
 import { createRouteBlock } from "./singleCarElts/createCarRouteBlock";
-import { createCarBlock } from "./createCarRowBlock";
+import { createCarBlock } from "./singleCarElts/createCarRowBlock";
 import { createEndBtn } from "./singleCarElts/createEndBtn";
 import { createRemoveBtn } from "./singleCarElts/createRemoveBtn";
-import { createSingleCar } from "./singleCarElts/createSingleCar";
+import { createSingleCar, createSingleCarContainer } from "./singleCarElts/createSingleCar";
 import { createStartBtn } from "./singleCarElts/createStartBtn";
 import { createSelectBtn } from "./singleCarElts/createSelectBtn";
+import { engineBtnHandler } from "../controllers/engineButtonsHandler";
+import { updateCarHandler } from "../controllers/updateCarHandler";
 
 export const createCarRow = ({name, color, id}: ICar) => {
-  
+
   const carRow = createCarBlock(id!);
 
   const carBtnsRow = createCarBtnsRow();
@@ -27,21 +29,25 @@ export const createCarRow = ({name, color, id}: ICar) => {
 
   carRow.append(carBtnsRow);
 
-  removeBtn.addEventListener('click', removeCarHandler);
-
   const routeBlock = createRouteBlock();
 
   const startBtn = createStartBtn(id!);
-  const endBtn = createEndBtn(id!);
+  const stopBtn = createEndBtn(id!);
 
   carRow.append(routeBlock);
 
   routeBlock.append(startBtn);
-  routeBlock.append(endBtn);
-
-  const car = createSingleCar(color, id!);
-
-  car.innerHTML = carTemplate();
+  routeBlock.append(stopBtn);
+  const car = createSingleCar();
+  const carBlock = createSingleCarContainer(color, id!);
+  carBlock.innerHTML = carTemplate();
   routeBlock.append(car);
+  car.append(carBlock);
+
+  removeBtn.addEventListener('click', removeCarHandler);
+  startBtn.addEventListener('click', engineBtnHandler);
+  stopBtn.addEventListener('click', engineBtnHandler);
+  selectBtn.addEventListener('click', () => updateCarHandler({name, color, id}));
+
   return carRow;
 };

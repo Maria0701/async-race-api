@@ -1,12 +1,14 @@
-import { DETAILED_BTNS } from "../../models/models";
-import { clearString } from "../../utilities/utilities";
 import { createNewElement } from "../createElt";
 
-export const createSingleCar = (color: string, id: number) => createNewElement({
+export const createSingleCar = () => createNewElement({
   tag: 'div',
-   attrs: {
+});
+
+export const createSingleCarContainer = (color: string, id: number) => createNewElement({
+  tag: 'div',
+  className: 'car-container',
+  attrs: {
     'style': `color: ${color}`,
-    'data-name': clearString(DETAILED_BTNS.stop),
-    'data-id': `${id}`,
+    'data-car': `${id}`,
   },
 });

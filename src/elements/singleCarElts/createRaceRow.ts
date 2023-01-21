@@ -1,7 +1,7 @@
-import { createNewElement } from "./createElt"
+import { createNewElement } from "../createElt";
 
 export const createRaceRow = () => createNewElement({
-    tag: 'div',
-    className: 'race-row',
-  });
+  tag: 'div',
+  className: 'race-row',
+});
 

@@ -82,6 +82,10 @@ img {
     color: white;
     background-color: var(--violet);
   }
+
+  &:disabled {
+    background-color: gray;
+  }
 }
 
 .btn--blue {
@@ -99,6 +103,9 @@ img {
   justify-content: flex-start;
   align-items: stretch;
   column-gap: 20px;
+  row-gap: 20px;
+  padding: 20px;
+  background-color: #17193c;
 }
 
 .string-row {
@@ -122,12 +129,20 @@ img {
     outline-color: grey;
     outline-width: 1px;
   }
+
+  &:disabled {
+    background: gray;
+  }
 }
 
 .input[type="color"] {
   height: 100%;
   padding: 0;
   border: 1px solid #ee82ee3b;
+
+  &:disabled {
+    background: gray;
+  }
 }
 
 .h1 {
@@ -161,8 +176,9 @@ img {
 .route {
   position: relative;
   display: grid;
-  grid-template-columns: 20px 20px 1fr 120px;
+  grid-template-columns: 30px 30px 1fr 120px;
   align-items: flex-start;
+  height: 105px;
 
   &::before {
     content: '';
@@ -173,4 +189,50 @@ img {
     height: 2px;
     background-color: #fff;
   }
+
+  & > div {
+    position: relative;
+  }
+}
+
+.start {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 10px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: white;
+  background-color: blueviolet;
+  border: 0;
+  transition: color 0.4s ease-in-out, 
+    box-shadow 0.4s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: pink;
+    box-shadow: 0px 8px 12px rgba(249, 78, 148, 0.32);
+  }
+
+  &:active {
+    color: white;
+    background-color: var(--violet);
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &--active {
+    background-color: blue;
+  }
+}
+
+.car-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
 }

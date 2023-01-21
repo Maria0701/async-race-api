@@ -1,4 +1,4 @@
-import { createNewElement } from "./createElt";
+import { createNewElement } from "../createElt";
 
 export const createCarBlock = (id:number) =>  createNewElement({
   tag: 'div',

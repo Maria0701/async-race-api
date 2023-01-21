@@ -1,6 +1,6 @@
-import { DETAILED_BTNS } from "../models/models";
-import { clearString } from "../utilities/utilities";
-import { createNewElement } from "./createElt";
+import { DETAILED_BTNS } from "../../models/models";
+import { clearString } from "../../utilities/utilities";
+import { createNewElement } from "../createElt";
 
 export const createBtn = () => createNewElement({
   tag: 'button',

@@ -1,4 +1,3 @@
-import { toGarageBtn, toWinnerBtn } from "./createBtn";
 import { createNewElement } from "./createElt";
 
 export const topRow = createNewElement({
@@ -6,5 +5,3 @@ export const topRow = createNewElement({
   className: 'top-row',
 });
 
-topRow.append(toGarageBtn());
-topRow.append(toWinnerBtn());

@@ -1,71 +1,48 @@
-import { createHandler } from './controllers/createCarHandler';
-import { createCars } from './controllers/createCarsHandler';
-import { createRaceContainer } from './controllers/createRaceContainer';
-import { ChooserRow } from './elements/chooserRow';
-import { createRaceBtn, createResetBtn } from './elements/createBtn';
-import { createBtn } from './elements/createCreateBtn';
-import { createGenerateBtn } from './elements/createGenerateBtn';
-import { createColorInput, createNameInput } from './elements/createInputs';
-import { createMainContainer } from './elements/createMainContainer';
-import { createUpdateBtn } from './elements/createUpdateBTn';
+import { toGarageBtn, toWinnerBtn } from './elements/garageRows/createBtn';
 import { topRow } from './elements/topRow';
-import { ICar, Paths } from './models/models';
-import { ajaxRequest } from './requests/ajaxRequest';
+import { PageNames } from './models/models';
+import { renderGaragePage } from './pages/renderGrage';
+import { renderWinnersPage } from './pages/renderWinners';
+import { stateElt } from './store';
 
 import './styles.scss';
+import { clearString } from './utilities/utilities';
 
 const container = document.querySelector('.main') as HTMLElement;
+let currentPage = stateElt.activePage;
+console.log(stateElt);
 
-container.append(topRow);
-const firstRow = ChooserRow();
-firstRow.append(createNameInput());
-firstRow.append(createColorInput());
+const toGarage = toGarageBtn(currentPage);
+const toWinners = toWinnerBtn(currentPage);
+container.before(topRow);
+topRow.append(toGarage);
+topRow.append(toWinners);
 
-const chooserRow1 = ChooserRow();
-container.append(chooserRow1);
-chooserRow1.append(createNameInput());
-chooserRow1.append(createColorInput());
-
-const createdBtn = createBtn();
-const updateBtn = createUpdateBtn();
-
-chooserRow1.append(createdBtn);
-
-createdBtn.addEventListener('click', createHandler);
-
-updateBtn.addEventListener('click', (evt) => {
-  let id = 1;
-  createHandler(evt, id)
+toGarage.addEventListener('click', (evt) => {
+  if ((evt.target as HTMLButtonElement)!.disabled === true) return;
+  container.innerHTML = '';
+  currentPage = clearString(PageNames.garage);
+  stateElt.activePage = clearString(PageNames.garage);
+  (toGarage as HTMLButtonElement).disabled = true;
+  (toWinners as HTMLButtonElement).disabled = false;
+  renderGaragePage(stateElt.activePageNumber);
 });
 
-const chooserRow2 = ChooserRow();
-container.append(chooserRow2);
-chooserRow2.append(createNameInput());
-chooserRow2.append(createColorInput());
-chooserRow2.append(updateBtn);
-const chooserRow3 = ChooserRow()
-container.append(chooserRow3);
-
-chooserRow3.append(createRaceBtn());
-chooserRow3.append(createResetBtn());
-
-const generateBtn = createGenerateBtn()
-chooserRow3.append(generateBtn);
-
-generateBtn.addEventListener('click', createCars);
-
-const mainContainer = createMainContainer();
-container.append(mainContainer);
-
-
-const cars = async () => await ajaxRequest('GET', Paths.garage)
-  .then((res:ICar[]) => {
-    createRaceContainer(res, 1, mainContainer)
+toWinners.addEventListener('click', (evt) => {
+  if ((evt.target as HTMLButtonElement)!.disabled === true) return;
+  container.innerHTML = '';
+  stateElt.activePage = clearString(PageNames.winners);
+  currentPage = clearString(PageNames.winners);
+  (toGarage as HTMLButtonElement).disabled = false;
+  (toWinners as HTMLButtonElement).disabled = false;
+  renderWinnersPage(stateElt.winnersActivePageNumber, 'sorting', container);
 });
-cars();
 
 
 
-
-
+if (currentPage === 'garage') {
+  renderGaragePage(stateElt.activePageNumber);
+} else {
+  renderWinnersPage(stateElt.winnersActivePageNumber, 'sorting', container);
+}
 

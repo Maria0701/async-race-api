@@ -11,7 +11,6 @@ export const ajaxRequest = async (method:string, path:string, content?: string) 
         },
       });
     } else {
-      console.log(content);
       response = await fetch(`${baseUrl}${path}`, {
         method: method,
         headers: {
@@ -21,7 +20,11 @@ export const ajaxRequest = async (method:string, path:string, content?: string) 
       });
     }
 
-    return await response.json();
+    if (response.ok) {
+      return await response.json();
+    } else {
+      return await response.text();
+    }
 
   } catch(e) {
     console.log(e);

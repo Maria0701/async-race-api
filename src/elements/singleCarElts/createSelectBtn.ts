@@ -4,7 +4,7 @@ import { createNewElement } from "../createElt";
 
 export const createSelectBtn = (id:number) => createNewElement({
   tag: 'button',
-  text: DETAILED_BTNS .select,
+  text: DETAILED_BTNS.select,
   attrs: {
     class: 'btn btn--yellow',
     'data-name': clearString(DETAILED_BTNS.select),

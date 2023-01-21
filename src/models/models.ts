@@ -6,7 +6,8 @@ export interface INewElt {
   tag: string,
   className?: string,
   attrs?: IAttrs,
-  text?: string
+  text?: string,
+  disable?: boolean,
 };
 
 export interface ICar {
@@ -18,6 +19,7 @@ export interface ICar {
 export enum Paths {
   garage = '/garage',
   winners = '/winners',
+  engine = '/engine',
 };
 
 export enum DETAILED_BTNS  {
@@ -28,10 +30,12 @@ export enum DETAILED_BTNS  {
   generate = 'GENERATE CARS',
   select = 'SELECT',
   remove = 'REMOVE',
-  toGarage = 'TO GARAGE',
-  toWinners = 'TO WINNERS',
+  toGarage = 'GARAGE',
+  toWinners = 'WINNERS',
   start = 'A',
   stop = 'B',
+  next = 'NEXT',
+  prev = 'PREV'
 };
 
 export enum PageNames {
@@ -43,4 +47,15 @@ export enum AjaxActions {
   put = 'PUT',
   get = 'GET',
   delete = 'DELETE',
-}
+  patch = 'PATCH',
+  post = 'POST'
+};
+
+export interface StringObj {
+  [key: string]: string 
+};
+
+export interface IEngine {
+  velocity: number,
+  distance: number,
+};

@@ -1,3 +1,5 @@
+import { StringObj } from "./models";
+
 export const baseUrl = 'http://localhost:3000';
 export const numOfCars = 100;
 export const startNum = 0;
@@ -38,3 +40,9 @@ export const CARS_TYPES = [
   'SUV',
   'Crossover',
 ];
+
+export const STOP_START: StringObj = {
+  a: 'started',
+  b: 'stopped',
+  drive: 'drive',
+};

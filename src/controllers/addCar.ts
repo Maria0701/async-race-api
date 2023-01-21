@@ -1,4 +1,4 @@
-import { ICar, Paths } from "../models/models"
+import { AjaxActions, ICar, Paths } from "../models/models"
 import { ajaxRequest } from "../requests/ajaxRequest"
 
 export const createCar = ({ name , color, id}: ICar) => {
@@ -12,10 +12,10 @@ export const createCar = ({ name , color, id}: ICar) => {
 
   if (id) {
     params = `${Paths.garage}/${id}`;
-    action = 'PUT';
+    action = AjaxActions.put;
   } else {
     params = Paths.garage;
-    action = 'POST';
+    action = AjaxActions.post;
   }
 
   return ajaxRequest(action, params, carToCreate);

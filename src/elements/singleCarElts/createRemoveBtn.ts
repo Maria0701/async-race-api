@@ -6,8 +6,8 @@ export const createRemoveBtn = (id: number) => createNewElement ({
   tag: 'button',
   text: DETAILED_BTNS.remove,
   attrs: {
-      class: 'btn btn--yellow',
-      'data-name': clearString(DETAILED_BTNS.remove),
-      'data-id': `${id}`,
+    class: 'btn btn--yellow',
+    'data-name': clearString(DETAILED_BTNS.remove),
+    'data-id': `${id}`,
   }
 });
