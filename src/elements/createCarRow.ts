@@ -12,8 +12,17 @@ import { createStartBtn } from "./singleCarElts/createStartBtn";
 import { createSelectBtn } from "./singleCarElts/createSelectBtn";
 import { engineBtnHandler } from "../controllers/engineButtonsHandler";
 import { updateCarHandler } from "../controllers/updateCarHandler";
+import { stateElt } from "../store";
 
 export const createCarRow = ({name, color, id}: ICar) => {
+  
+  const getLeft = () => {
+    const currentLeftPosition = stateElt.animations
+    .find((item) => item.id === id);
+    return currentLeftPosition
+    ? currentLeftPosition.left
+    : 0;
+  }
 
   const carRow = createCarBlock(id!);
 
@@ -39,11 +48,13 @@ export const createCarRow = ({name, color, id}: ICar) => {
   routeBlock.append(startBtn);
   routeBlock.append(stopBtn);
   const car = createSingleCar();
-  const carBlock = createSingleCarContainer(color, id!);
+
+  const carBlock = createSingleCarContainer(color, id!, getLeft());
+
   carBlock.innerHTML = carTemplate();
   routeBlock.append(car);
   car.append(carBlock);
-
+  
   removeBtn.addEventListener('click', removeCarHandler);
   startBtn.addEventListener('click', engineBtnHandler);
   stopBtn.addEventListener('click', engineBtnHandler);

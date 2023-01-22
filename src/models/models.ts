@@ -59,3 +59,9 @@ export interface IEngine {
   velocity: number,
   distance: number,
 };
+
+export interface IWinners {
+  id: number,
+  wins: number,
+  time: number,
+};

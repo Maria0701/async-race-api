@@ -5,4 +5,3 @@ export const createH1 = (text: string) => createNewElement({
   text: `${text}`,
   className: 'h1'
 });
-  

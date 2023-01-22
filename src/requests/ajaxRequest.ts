@@ -1,4 +1,5 @@
 import { baseUrl } from "../models/consts";
+import { ICar, IWinners, StringObj } from "../models/models";
 
 export const ajaxRequest = async (method:string, path:string, content?: string) => {
   try {
@@ -31,7 +32,18 @@ export const ajaxRequest = async (method:string, path:string, content?: string) 
   }
 };
 
+type IPromise = [IWinners[], ICar[]];
 
+export const ajaxRequestAll = async (method:string, urls:string[]) => await Promise.all(
+  urls.map(async url => {
+  const resp = await fetch(`${baseUrl}${url}`, {
+    method: method,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+  });
+  return resp.json() as unknown;
+}));
 
 
 

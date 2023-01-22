@@ -6,6 +6,8 @@ import { createMainContainer } from "../elements/createMainContainer";
 import { createFirstRow } from "../elements/garageRows/firstRow";
 import { createSecondRow } from "../elements/garageRows/secondRow";
 import { cars } from "../controllers/renderCars";
+import { raceHandler } from "../controllers/raceHandler";
+import { resetBtnHandler } from "../controllers/resetBtnHandler";
 
 export const renderGaragePage = (pageNumber:number) => {
   const container = document.querySelector('.main') as HTMLDivElement;
@@ -20,13 +22,17 @@ export const renderGaragePage = (pageNumber:number) => {
   const chooserRow3 = createChooserRow()
   container.append(chooserRow3);
 
-  chooserRow3.append(createRaceBtn());
-  chooserRow3.append(createResetBtn());
+  const raceBtn = createRaceBtn();
+  const resetBtn = createResetBtn();
+  chooserRow3.append(raceBtn);
+  chooserRow3.append(resetBtn);
 
   const generateBtn = createGenerateBtn()
   chooserRow3.append(generateBtn);
 
   generateBtn.addEventListener('click', () => createCars(pageNumber));
+  raceBtn.addEventListener('click', raceHandler);
+  resetBtn.addEventListener('click', resetBtnHandler);
 
   const mainContainer = createMainContainer();
   container.append(mainContainer);

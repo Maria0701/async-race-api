@@ -4,6 +4,7 @@ export const baseUrl = 'http://localhost:3000';
 export const numOfCars = 100;
 export const startNum = 0;
 export const carsPerPage = 7;
+export const winnersPerPage = 6;
 
 export const CARS_SUPPLS = [
   'Audi',
@@ -46,3 +47,11 @@ export const STOP_START: StringObj = {
   b: 'stopped',
   drive: 'drive',
 };
+
+export const WINNERS_HEAD:string[] = [
+  'Number',
+  'Car',
+  'Name',
+  'Wins',
+  'Best time (seconds)',
+];

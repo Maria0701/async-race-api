@@ -2,7 +2,7 @@ import { DETAILED_BTNS } from "../models/models";
 import { stateElt } from "../store";
 import { cars } from "./renderCars";
 
-export const paginationHandler = (evt: Event, page: number) => {
+export const paginationHandler = (evt: Event, page: number, callback: Function) => {
   const btn = evt.target as HTMLButtonElement;
   if (btn.disabled === true) return;
 
@@ -12,5 +12,5 @@ export const paginationHandler = (evt: Event, page: number) => {
     page -= 1;
   }
   stateElt.activePageNumber = page;
-  cars(page);
+  callback(page);
 };

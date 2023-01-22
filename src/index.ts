@@ -35,14 +35,20 @@ toWinners.addEventListener('click', (evt) => {
   currentPage = clearString(PageNames.winners);
   (toGarage as HTMLButtonElement).disabled = false;
   (toWinners as HTMLButtonElement).disabled = false;
-  renderWinnersPage(stateElt.winnersActivePageNumber, 'sorting', container);
+  renderWinnersPage(
+    stateElt.winnersActivePageNumber, 
+    stateElt.sorting, 
+    stateElt.order,
+  );
 });
-
-
 
 if (currentPage === 'garage') {
   renderGaragePage(stateElt.activePageNumber);
 } else {
-  renderWinnersPage(stateElt.winnersActivePageNumber, 'sorting', container);
+  renderWinnersPage(
+    stateElt.winnersActivePageNumber, 
+    stateElt.sorting, 
+    stateElt.order,
+  );
 }
 
