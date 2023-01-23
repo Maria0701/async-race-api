@@ -44,10 +44,10 @@ export const engineHandler = async (queryObj: StringObj ) => {
           }
         })
         .catch((e) => alert(e));
-      })
-      .finally(() => {
-        correctStateOfAnimation(Number(queryObj.id), left);
-      });
+    })
+    .finally(() => {
+      correctStateOfAnimation(Number(queryObj.id), left);
+    });
   
   return engineStart;
 };
