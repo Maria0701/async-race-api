@@ -1,11 +1,11 @@
-import { STOP_START } from "../../models/consts";
-import { DETAILED_BTNS } from "../../models/models";
-import { clearString } from "../../utilities/utilities";
-import { createNewElement } from "../createElt";
+import { STOP_START } from '../../models/consts';
+import { DetailedBtns } from '../../models/models';
+import { clearString } from '../../utilities/utilities';
+import { createNewElement } from '../createElt';
 
 export const createStartBtn = (id:number) => {
 
-  const name: string = STOP_START[clearString(DETAILED_BTNS.start)];
+  const name: string = STOP_START[clearString(DetailedBtns.start)];
 
   return createNewElement({
     tag: 'button',
@@ -14,6 +14,6 @@ export const createStartBtn = (id:number) => {
       'data-name': `${name}`,
       'data-id': `${id}`,
     },
-    text: DETAILED_BTNS.start,
+    text: DetailedBtns.start,
   });
-}
+};

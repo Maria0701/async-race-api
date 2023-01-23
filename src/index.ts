@@ -10,8 +10,6 @@ import { clearString } from './utilities/utilities';
 
 const container = document.querySelector('.main') as HTMLElement;
 let currentPage = stateElt.activePage;
-console.log(stateElt);
-
 const toGarage = toGarageBtn(currentPage);
 const toWinners = toWinnerBtn(currentPage);
 container.before(topRow);

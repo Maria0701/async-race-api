@@ -1,49 +1,47 @@
-import { DETAILED_BTNS } from "../../models/models";
-import { clearString } from "../../utilities/utilities";
-import { createNewElement } from "../createElt";
+import { DetailedBtns } from '../../models/models';
+import { clearString } from '../../utilities/utilities';
+import { createNewElement } from '../createElt';
 
 export const toGarageBtn = (currPage: string) => {
-  let isDisabled = clearString(DETAILED_BTNS.toGarage) === currPage;
+  const isDisabled = clearString(DetailedBtns.toGarage) === currPage;
   return createNewElement({
     tag: 'button',
-    text: DETAILED_BTNS.toGarage,
+    text: DetailedBtns.toGarage,
     attrs: {
       class: 'btn btn--yellow',
-      'data-id': clearString(DETAILED_BTNS.toGarage),
+      'data-id': clearString(DetailedBtns.toGarage),
     },
     disable: isDisabled,
   });
 };
 
 export const toWinnerBtn = (currPage: string) => {
-  let isDisabled = clearString(DETAILED_BTNS.toWinners) === currPage;
+  const isDisabled = clearString(DetailedBtns.toWinners) === currPage;
   return createNewElement({
-  tag: 'button',
-  text: DETAILED_BTNS.toWinners,
-  attrs: {
-    class: 'btn btn--yellow',
-    'data-id': clearString(DETAILED_BTNS.toWinners),
-  },
-  disable: isDisabled,
-});
-}
+    tag: 'button',
+    text: DetailedBtns.toWinners,
+    attrs: {
+      class: 'btn btn--yellow',
+      'data-id': clearString(DetailedBtns.toWinners),
+    },
+    disable: isDisabled,
+  });
+};
 
 export const createRaceBtn = () => createNewElement({
   tag: 'button',
-  text: DETAILED_BTNS.race,
+  text: DetailedBtns.race,
   attrs: {
     class: 'btn btn--yellow',
-    'data-id': clearString(DETAILED_BTNS.race),
-  }
+    'data-id': clearString(DetailedBtns.race),
+  },
 });
 
 export const createResetBtn = () => createNewElement({
   tag: 'button',
-  text: DETAILED_BTNS.reset,
+  text: DetailedBtns.reset,
   attrs: {
     class: 'btn btn--yellow',
-    'data-id': clearString(DETAILED_BTNS.reset),
-  }
+    'data-id': clearString(DetailedBtns.reset),
+  },
 });
-
-

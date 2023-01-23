@@ -1,13 +1,13 @@
-import { AjaxActions, ICar, Paths } from "../models/models"
-import { ajaxRequest } from "../requests/ajaxRequest"
+import { AjaxActions, ICar, Paths } from '../models/models';
+import { ajaxRequest } from '../requests/ajaxRequest';
 
-export const createCar = ({ name , color, id}: ICar) => {
+export const createCar = ({ name, color, id }: ICar) => {
   let params:string;
   let action: string;
 
   const carToCreate = JSON.stringify({
     name: name,
-    color: color
+    color: color,
   });
 
   if (id) {
@@ -19,4 +19,4 @@ export const createCar = ({ name , color, id}: ICar) => {
   }
 
   return ajaxRequest(action, params, carToCreate);
-}
+};

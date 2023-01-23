@@ -1,13 +1,13 @@
-import { createCarRow } from "../elements/createCarRow";
-import { createH1 } from "../elements/createH1";
-import { createPageElt } from "../elements/createPageElt";
-import { createChooserRow } from "../elements/garageRows/chooserRow";
-import { createNextPage, createPrevPage } from "../elements/pages";
-import { createRaceBlock } from "../elements/singleCarElts/createRaceContainer";
-import { carsPerPage } from "../models/consts";
-import { ICar, PageNames } from "../models/models";
-import { paginationHandler } from "./paginationHandler";
-import { cars } from "./renderCars";
+import { createCarRow } from '../elements/createCarRow';
+import { createH1 } from '../elements/createH1';
+import { createPageElt } from '../elements/createPageElt';
+import { createChooserRow } from '../elements/garageRows/chooserRow';
+import { createNextPage, createPrevPage } from '../elements/pages';
+import { createRaceBlock } from '../elements/singleCarElts/createRaceContainer';
+import { carsPerPage } from '../models/consts';
+import { ICar, PageNames } from '../models/models';
+import { paginationHandler } from './paginationHandler';
+import { cars } from './renderCars';
 
 export const createRaceContainer = (carsArr:ICar[], page: number, container: HTMLElement) => {
 
@@ -25,7 +25,7 @@ export const createRaceContainer = (carsArr:ICar[], page: number, container: HTM
   [...carsArr].slice(startCar, endCar)
     .map(item => raceContainer.append(createCarRow(item)));
 
-  const pagesRow = createChooserRow()
+  const pagesRow = createChooserRow();
   container.append(pagesRow);
   const prev = createPrevPage(page === 1);
   const next = createNextPage(page === Math.ceil(carsArr.length / carsPerPage));

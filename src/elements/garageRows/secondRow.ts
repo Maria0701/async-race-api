@@ -1,6 +1,6 @@
-import { createChooserRow } from "./chooserRow";
-import { createColorInput, createNameInput } from "./createInputs";
-import { createUpdateBtn } from "./createUpdateBTn";
+import { createChooserRow } from './chooserRow';
+import { createColorInput, createNameInput } from './createInputs';
+import { createUpdateBtn } from './createUpdateBTn';
 
 export const createSecondRow = () => {
   const chooserRow2 = createChooserRow();
@@ -9,4 +9,4 @@ export const createSecondRow = () => {
   const updateBtn = createUpdateBtn();
   chooserRow2.append(updateBtn);
   return chooserRow2;
-}
+};

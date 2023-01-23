@@ -1,23 +1,23 @@
-import { DETAILED_BTNS } from "../models/models";
-import { clearString } from "../utilities/utilities";
-import { createNewElement } from "./createElt";
+import { DetailedBtns } from '../models/models';
+import { clearString } from '../utilities/utilities';
+import { createNewElement } from './createElt';
 
 export const createNextPage = (disable:boolean) => createNewElement({
   tag: 'button',
-  text: DETAILED_BTNS.next,
+  text: DetailedBtns.next,
   attrs: {
     class: 'btn btn--blue',
-    'data-name': clearString(DETAILED_BTNS.next),
+    'data-name': clearString(DetailedBtns.next),
   },
   disable,
 });
 
 export const createPrevPage = (disable:boolean) => createNewElement({
   tag: 'button',
-  text: DETAILED_BTNS.prev,
+  text: DetailedBtns.prev,
   attrs: {
     class: 'btn btn--blue',
-    'data-name': clearString(DETAILED_BTNS.prev),
+    'data-name': clearString(DetailedBtns.prev),
   },
   disable,
 });

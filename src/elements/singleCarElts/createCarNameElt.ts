@@ -1,7 +1,7 @@
-import { createNewElement } from "../createElt";
+import { createNewElement } from '../createElt';
 
 export const createCarNameElement = (name: string) => createNewElement({
-    tag: 'h3',
-    className: 'car-row__name',
-    text: name,
-  });
+  tag: 'h3',
+  className: 'car-row__name',
+  text: name,
+});

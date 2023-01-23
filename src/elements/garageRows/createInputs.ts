@@ -1,11 +1,11 @@
-import { createNewElement } from "../createElt";
+import { createNewElement } from '../createElt';
 
 export const createNameInput = (disable:boolean) => createNewElement({
   tag: 'input',
   attrs: {
     class: 'input',
     value: '',
-    type: 'text'
+    type: 'text',
   },
   disable: disable,
 });
@@ -15,7 +15,7 @@ export const createColorInput = (disable:boolean) => createNewElement({
   attrs: {
     class: 'input',
     value: '',
-    type: 'color'
+    type: 'color',
   },
   disable: disable,
 });

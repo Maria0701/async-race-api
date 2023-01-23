@@ -1,4 +1,4 @@
-import { StringObj } from "./models";
+import { StringObj } from './models';
 
 export const baseUrl = 'http://localhost:3000';
 export const numOfCars = 100;

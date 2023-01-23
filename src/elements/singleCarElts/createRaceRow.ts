@@ -1,4 +1,4 @@
-import { createNewElement } from "../createElt";
+import { createNewElement } from '../createElt';
 
 export const createRaceRow = () => createNewElement({
   tag: 'div',

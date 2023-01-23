@@ -1,5 +1,5 @@
-import { WINNERS_HEAD } from "../../models/consts";
-import { createNewElement } from "../createElt";
+import { WINNERS_HEAD } from '../../models/consts';
+import { createNewElement } from '../createElt';
 
 export const createWinnerTable = () => {
   const tbody = createNewElement({
@@ -10,8 +10,8 @@ export const createWinnerTable = () => {
     tag: 'tr',
   });
 
-  WINNERS_HEAD.map((item) => tr.append(createNewElement({tag: 'th', text: item})));
+  WINNERS_HEAD.map((item) => tr.append(createNewElement({ tag: 'th', text: item })));
 
   tbody.append(tr);
   return tbody;
-}
+};

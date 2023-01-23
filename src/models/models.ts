@@ -1,6 +1,6 @@
 export interface IAttrs {
   [key: string]: string
-};
+}
 
 export interface INewElt {
   tag: string,
@@ -8,25 +8,25 @@ export interface INewElt {
   attrs?: IAttrs,
   text?: string,
   disable?: boolean,
-};
+}
 
 export interface ICar {
-  "name": string,
-  "color": string,
-  "id"?: number,
+  name: string,
+  color: string,
+  id?: number,
 }
 
 export enum Paths {
   garage = '/garage',
   winners = '/winners',
   engine = '/engine',
-};
+}
 
-export enum DETAILED_BTNS  {
+export enum DetailedBtns {
   create = 'CREATE',
   update = 'UPDATE',
   race = 'RACE',
-  reset ='RESET',
+  reset = 'RESET',
   generate = 'GENERATE CARS',
   select = 'SELECT',
   remove = 'REMOVE',
@@ -35,33 +35,33 @@ export enum DETAILED_BTNS  {
   start = 'A',
   stop = 'B',
   next = 'NEXT',
-  prev = 'PREV'
-};
+  prev = 'PREV',
+}
 
 export enum PageNames {
   garage = 'Garage',
   winners = 'Winners',
-};
+}
 
 export enum AjaxActions {
   put = 'PUT',
   get = 'GET',
   delete = 'DELETE',
   patch = 'PATCH',
-  post = 'POST'
-};
+  post = 'POST',
+}
 
 export interface StringObj {
   [key: string]: string 
-};
+}
 
 export interface IEngine {
   velocity: number,
   distance: number,
-};
+}
 
 export interface IWinners {
   id: number,
   wins: number,
   time: number,
-};
+}

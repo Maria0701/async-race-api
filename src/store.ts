@@ -1,7 +1,7 @@
 export interface IAnimations {
   id: number,
   left: number,
-};
+}
 
 interface IState {
   activePage: string,
@@ -15,7 +15,7 @@ interface IState {
   updateName: string,
   updateColor: string,
   updateId: number,
-};
+}
 
 export const stateElt:IState = {
   activePage: 'garage',

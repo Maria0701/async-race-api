@@ -1,9 +1,9 @@
-import { DETAILED_BTNS, ICar } from "../models/models";
-import { clearString } from "../utilities/utilities";
-import { createHandler } from "./createCarHandler";
+import { DetailedBtns, ICar } from '../models/models';
+import { clearString } from '../utilities/utilities';
+import { createHandler } from './createCarHandler';
 
-export const updateCarHandler = async ({name, color, id}:ICar) => {
-  const updateBtn = document.querySelector(`[data-name="${clearString(DETAILED_BTNS.update)}"]`) as HTMLButtonElement;
+export const updateCarHandler = async ({ name, color, id }:ICar) => {
+  const updateBtn = document.querySelector(`[data-name="${clearString(DetailedBtns.update)}"]`) as HTMLButtonElement;
   
   const row = updateBtn.closest('.string-row');
   const nameElt = row?.querySelector('[type="text"]') as HTMLInputElement;
@@ -18,5 +18,4 @@ export const updateCarHandler = async ({name, color, id}:ICar) => {
   colorElt.value = color;
 
   updateBtn.addEventListener('click', (evt) => createHandler(evt, id));
-
 };

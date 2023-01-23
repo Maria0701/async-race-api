@@ -1,15 +1,15 @@
 
-import { paginationHandler } from "../../controllers/paginationHandler";
-import { getWinners } from "../../controllers/renderWinners";
-import { winnersPerPage } from "../../models/consts";
-import { ICar, IWinners, PageNames } from "../../models/models";
-import { createNewElement } from "../createElt";
-import { createH1 } from "../createH1";
-import { createPageElt } from "../createPageElt";
-import { createChooserRow } from "../garageRows/chooserRow";
-import { createNextPage, createPrevPage } from "../pages";
-import { winnersRow } from "./winnersRow";
-import { createWinnerTable } from "./winnersTable";
+// import { paginationHandler } from '../../controllers/paginationHandler';
+// import { getWinners } from '../../controllers/renderWinners';
+import { winnersPerPage } from '../../models/consts';
+import { ICar, IWinners, PageNames } from '../../models/models';
+import { createNewElement } from '../createElt';
+import { createH1 } from '../createH1';
+import { createPageElt } from '../createPageElt';
+import { createChooserRow } from '../garageRows/chooserRow';
+import { createNextPage, createPrevPage } from '../pages';
+import { winnersRow } from './winnersRow';
+import { createWinnerTable } from './winnersTable';
 
 export const createWinnersView = (winners: IWinners[], carsArr: ICar[], page: number, container: HTMLElement) => {
   const pageName = `${PageNames.winners} (${winners.length})`;
@@ -18,8 +18,9 @@ export const createWinnersView = (winners: IWinners[], carsArr: ICar[], page: nu
 
   const table = createNewElement({
     tag: 'table',
-    className: 'table'
+    className: 'table',
   });
+
   const tbody = createWinnerTable();
   table.append(tbody);
   container.append(table);
@@ -30,19 +31,17 @@ export const createWinnersView = (winners: IWinners[], carsArr: ICar[], page: nu
     : carsArr.length;
 
   [...winners].slice(startCar, endCar)
-     .map((item, id) => {
+    .map((item, id) => {
       const car = carsArr.find((i: ICar) => i.id === item.id);
-      
-      console.log(car);
-      tbody.append(winnersRow(id + 1, item, car!))
+      tbody.append(winnersRow(id + 1, item, car!));
     });
 
-  const pagesRow = createChooserRow ()
+  const pagesRow = createChooserRow();
   container.append(pagesRow);
   const prev = createPrevPage(page === 1);
   const next = createNextPage(page === Math.ceil(carsArr.length / winnersPerPage));
-  prev.addEventListener('click', (evt) => paginationHandler(evt, page, getWinners ));
-  next.addEventListener('click', (evt) => paginationHandler(evt, page, getWinners));
+  // prev.addEventListener('click', (evt) => paginationHandler(evt, page, getWinners));
+  // next.addEventListener('click', (evt) => paginationHandler(evt, page, getWinners));
   pagesRow.append(prev);
   pagesRow.append(next);
 };

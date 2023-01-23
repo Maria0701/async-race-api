@@ -1,5 +1,4 @@
-import { baseUrl } from "../models/consts";
-import { ICar, IWinners, StringObj } from "../models/models";
+import { baseUrl } from '../models/consts';
 
 export const ajaxRequest = async (method:string, path:string, content?: string) => {
   try {
@@ -8,14 +7,14 @@ export const ajaxRequest = async (method:string, path:string, content?: string) 
       response = await fetch(`${baseUrl}${path}`, {
         method: method,
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
     } else {
       response = await fetch(`${baseUrl}${path}`, {
         method: method,
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body:`${content}`,
       });
@@ -27,23 +26,21 @@ export const ajaxRequest = async (method:string, path:string, content?: string) 
       return await response.text();
     }
 
-  } catch(e) {
-    console.log(e);
+  } catch (e) {
+    alert(e);
   }
 };
 
-type IPromise = [IWinners[], ICar[]];
-
-export const ajaxRequestAll = async (method:string, urls:string[]) => await Promise.all(
+export const ajaxRequestAll = async (method:string, urls:string[]) => Promise.all(
   urls.map(async url => {
-  const resp = await fetch(`${baseUrl}${url}`, {
-    method: method,
-    headers: {
+    const resp = await fetch(`${baseUrl}${url}`, {
+      method: method,
+      headers: {
         'Content-Type': 'application/json',
-    },
-  });
-  return resp.json() as unknown;
-}));
+      },
+    });
+    return resp.json() as unknown;
+  }));
 
 
 

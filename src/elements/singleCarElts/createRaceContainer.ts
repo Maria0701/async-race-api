@@ -1,6 +1,6 @@
-import { createNewElement } from "../createElt";
+import { createNewElement } from '../createElt';
 
-export const createRaceBlock = () => createNewElement ({
-    tag: 'div',
-    className: 'main-container__race',
+export const createRaceBlock = () => createNewElement({
+  tag: 'div',
+  className: 'main-container__race',
 });
